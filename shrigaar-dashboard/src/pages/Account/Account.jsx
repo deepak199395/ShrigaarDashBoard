@@ -1,9 +1,10 @@
 import React from 'react'
+import ComingSoon from '../../components/ComingSoon/ComingSoon'
 
 const Account = () => {
   return (
     <div>
-      <h3>Account Page</h3>
+      <ComingSoon/>
     </div>
   )
 }

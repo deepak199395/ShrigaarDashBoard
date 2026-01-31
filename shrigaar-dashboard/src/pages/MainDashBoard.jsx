@@ -8,7 +8,6 @@ const MainDashBoard = () => {
         <div className="app">
             <Sidebar isOpen={isSidebarOpen} />
             <div className="main">
-            <Navbar toggleSidebar={()=>setIsSidebarOpen(!isSidebarOpen)}/>
                 <div className="content">
                  <h1>Welcome 👋</h1>
                  <p>Select an option from the sidebar</p>

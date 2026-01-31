@@ -6,12 +6,12 @@ import Navbar from "./components/Navbar";
 import MainDashBoard from "./pages/MainDashBoard";
 import CreateStaff from "./pages/CreateStaff";
 import CreateProduct from "./pages/CreateProduct";
-import Account from "./pages/Account";
-import Sales from "./pages/Sales";
+import Account from "./pages/Account/Account";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 
 import "./App.css";
+import Sales from "./pages/Sales/Sales";
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);

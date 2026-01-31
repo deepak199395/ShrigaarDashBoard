@@ -1,10 +1,10 @@
 import React from 'react'
+import ComingSoon from '../components/ComingSoon/ComingSoon'
 
 const Analytics = () => {
   return (
     <div>
-      
-      <h3>Analytics Page</h3>
+      <ComingSoon/>
     </div>
   )
 }
