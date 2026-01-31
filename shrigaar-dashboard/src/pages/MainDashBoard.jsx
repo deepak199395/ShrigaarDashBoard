@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
 import "../Style/MainDashBoard.css"
 const MainDashBoard = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const [isSidebarOpen] = useState(false)
     return (
         <div className="app">
             <Sidebar isOpen={isSidebarOpen} />

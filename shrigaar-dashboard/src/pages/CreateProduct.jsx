@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "../Style/CreateProduct.css";
-
 import CategoriesProduct from "./Categories/CategoriesProduct";
 import CollectionProduct from "./Collections/CollectionProduct";
-
 import CreateCategoryModal from "../components/modals/ProductModels/CreateCategoryModal";
 import CreateCollectionModal from "../components/modals/ProductModels/CreateCollectionModal";
 import CreateCollProjectModal from "../components/modals/ProductModels/CreateCollProjectModal";
@@ -12,12 +10,10 @@ import CreateCatProjectModal from "../components/modals/ProductModels/CreateCatP
 const CreateProduct = () => {
   const [type, setType] = useState("");
   const [subType, setSubType] = useState("");
-
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [openCollectionModal, setOpenCollectionModal] = useState(false);
   const [openCatProjectModal, setOpenCatProjectModal] = useState(false);
   const [openCollProjectModal, setOpenCollProjectModal] = useState(false);
-
   const resetSubType = () => setSubType("");
 
   return (
