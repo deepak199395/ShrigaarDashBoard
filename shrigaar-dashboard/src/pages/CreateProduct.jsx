@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import "../Style/CreateProduct.css";
 
-import CreateCategoryModal from "../components/modals/ProductModels/CreateCategoryModal";
-import CreateCollectionModal from "../components/modals/ProductModels/CreateCollectionModal";
-
 import CategoriesProduct from "./Categories/CategoriesProduct";
 import CollectionProduct from "./Collections/CollectionProduct";
 
+import CreateCategoryModal from "../components/modals/ProductModels/CreateCategoryModal";
+import CreateCollectionModal from "../components/modals/ProductModels/CreateCollectionModal";
+import CreateCollProjectModal from "../components/modals/ProductModels/CreateCollProjectModal";
+import CreateCatProjectModal from "../components/modals/ProductModels/CreateCatProjectModal";
+
 const CreateProduct = () => {
-  const [type, setType] = useState(""); 
-  const [subType, setSubType] = useState(""); 
+  const [type, setType] = useState("");
+  const [subType, setSubType] = useState("");
 
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [openCollectionModal, setOpenCollectionModal] = useState(false);
+  const [openCatProjectModal, setOpenCatProjectModal] = useState(false);
+  const [openCollProjectModal, setOpenCollProjectModal] = useState(false);
 
   const resetSubType = () => setSubType("");
 
@@ -20,7 +24,7 @@ const CreateProduct = () => {
     <div className="create-product-page">
       <h1>Create Product</h1>
 
-      {/* STEP 1: Main selection */}
+      {/* STEP 1: MAIN SELECTION */}
       <div className="selection-grid">
         <CollectionProduct
           selected={type === "collection"}
@@ -64,12 +68,24 @@ const CreateProduct = () => {
               className={`select-card category-card ${
                 subType === "existingCategory" ? "active" : ""
               }`}
-              onClick={() => {
-                setSubType("existingCategory");
-              }}
+              onClick={() => setSubType("existingCategory")}
             >
               <h4>Existing Category List</h4>
               <p>Select from existing categories</p>
+            </div>
+
+            {/* Create Project inside Category */}
+            <div
+              className={`select-card category-card ${
+                subType === "createCatProject" ? "active" : ""
+              }`}
+              onClick={() => {
+                setSubType("createCatProject");
+                setOpenCatProjectModal(true);
+              }}
+            >
+              <h4>Create Project</h4>
+              <p>Create project inside selected category</p>
             </div>
           </div>
         </div>
@@ -100,18 +116,30 @@ const CreateProduct = () => {
               className={`select-card collection-card ${
                 subType === "existingCollection" ? "active" : ""
               }`}
-              onClick={() => {
-                setSubType("existingCollection");
-              }}
+              onClick={() => setSubType("existingCollection")}
             >
               <h4>Existing Collection List</h4>
               <p>Select from existing collections</p>
+            </div>
+
+            {/* Create Project inside Collection */}
+            <div
+              className={`select-card collection-card ${
+                subType === "createCollProject" ? "active" : ""
+              }`}
+              onClick={() => {
+                setSubType("createCollProject");
+                setOpenCollProjectModal(true);
+              }}
+            >
+              <h4>Create Project</h4>
+              <p>Create project inside selected collection</p>
             </div>
           </div>
         </div>
       )}
 
-      {/* STEP 3: Selected info */}
+      {/* STEP 3: SELECTED INFO */}
       {(type || subType) && (
         <div
           className={`selected-info ${
@@ -125,7 +153,7 @@ const CreateProduct = () => {
         </div>
       )}
 
-      {/* MODALS */}
+      {/* MODALS (ALWAYS AT BOTTOM) */}
       <CreateCategoryModal
         isOpen={openCategoryModal}
         onClose={() => setOpenCategoryModal(false)}
@@ -134,6 +162,16 @@ const CreateProduct = () => {
       <CreateCollectionModal
         isOpen={openCollectionModal}
         onClose={() => setOpenCollectionModal(false)}
+      />
+
+      <CreateCatProjectModal
+        isOpen={openCatProjectModal}
+        onClose={() => setOpenCatProjectModal(false)}
+      />
+
+      <CreateCollProjectModal
+        isOpen={openCollProjectModal}
+        onClose={() => setOpenCollProjectModal(false)}
       />
     </div>
   );
