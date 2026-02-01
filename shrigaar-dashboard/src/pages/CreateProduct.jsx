@@ -6,14 +6,24 @@ import CreateCategoryModal from "../components/modals/ProductModels/CreateCatego
 import CreateCollectionModal from "../components/modals/ProductModels/CreateCollectionModal";
 import CreateCollProjectModal from "../components/modals/ProductModels/CreateCollProjectModal";
 import CreateCatProjectModal from "../components/modals/ProductModels/CreateCatProjectModal";
+import ExistingCollListModel from "../components/modals/ProductModels/ExistingCollListModel";
+import ExistingCatListModel from "../components/modals/ProductModels/ExistingCatListModel";
 
 const CreateProduct = () => {
   const [type, setType] = useState("");
   const [subType, setSubType] = useState("");
+
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [openCollectionModal, setOpenCollectionModal] = useState(false);
   const [openCatProjectModal, setOpenCatProjectModal] = useState(false);
   const [openCollProjectModal, setOpenCollProjectModal] = useState(false);
+
+  const [openExistingCollModal, setOpenExistingCollModal] = useState(false);
+  const [openExistingCatModal, setOpenExistingCatModal] = useState(false);
+
+  const [selectedCollection, setSelectedCollection] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   const resetSubType = () => setSubType("");
 
   return (
@@ -45,7 +55,6 @@ const CreateProduct = () => {
           <h3 className="category-heading">Category Options</h3>
 
           <div className="selection-grid small">
-            {/* Create New Category */}
             <div
               className={`select-card category-card ${
                 subType === "newCategory" ? "active" : ""
@@ -59,18 +68,19 @@ const CreateProduct = () => {
               <p>Add a new category</p>
             </div>
 
-            {/* Existing Category List */}
             <div
               className={`select-card category-card ${
                 subType === "existingCategory" ? "active" : ""
               }`}
-              onClick={() => setSubType("existingCategory")}
+              onClick={() => {
+                setSubType("existingCategory");
+                setOpenExistingCatModal(true);
+              }}
             >
               <h4>Existing Category List</h4>
               <p>Select from existing categories</p>
             </div>
 
-            {/* Create Project inside Category */}
             <div
               className={`select-card category-card ${
                 subType === "createCatProject" ? "active" : ""
@@ -93,7 +103,6 @@ const CreateProduct = () => {
           <h3 className="collection-heading">Collection Options</h3>
 
           <div className="selection-grid small">
-            {/* Create New Collection */}
             <div
               className={`select-card collection-card ${
                 subType === "newCollection" ? "active" : ""
@@ -107,18 +116,19 @@ const CreateProduct = () => {
               <p>Add a new collection</p>
             </div>
 
-            {/* Existing Collection List */}
             <div
               className={`select-card collection-card ${
                 subType === "existingCollection" ? "active" : ""
               }`}
-              onClick={() => setSubType("existingCollection")}
+              onClick={() => {
+                setSubType("existingCollection");
+                setOpenExistingCollModal(true);
+              }}
             >
               <h4>Existing Collection List</h4>
               <p>Select from existing collections</p>
             </div>
 
-            {/* Create Project inside Collection */}
             <div
               className={`select-card collection-card ${
                 subType === "createCollProject" ? "active" : ""
@@ -135,7 +145,20 @@ const CreateProduct = () => {
         </div>
       )}
 
-      {/* STEP 3: SELECTED INFO */}
+      {/* SELECTED INFO */}
+      {type === "collection" && selectedCollection && (
+        <div className="selected-info collection-info">
+          <strong>Selected Collection:</strong> {selectedCollection.name}
+        </div>
+      )}
+
+      {type === "category" && selectedCategory && (
+        <div className="selected-info category-info">
+          <strong>Selected Category:</strong> {selectedCategory.name}
+        </div>
+      )}
+
+      {/* FLOW INFO */}
       {(type || subType) && (
         <div
           className={`selected-info ${
@@ -149,7 +172,7 @@ const CreateProduct = () => {
         </div>
       )}
 
-      {/* MODALS (ALWAYS AT BOTTOM) */}
+      {/* MODALS */}
       <CreateCategoryModal
         isOpen={openCategoryModal}
         onClose={() => setOpenCategoryModal(false)}
@@ -168,6 +191,22 @@ const CreateProduct = () => {
       <CreateCollProjectModal
         isOpen={openCollProjectModal}
         onClose={() => setOpenCollProjectModal(false)}
+      />
+
+      <ExistingCollListModel
+        isOpen={openExistingCollModal}
+        onClose={() => setOpenExistingCollModal(false)}
+        onSelect={(collection) => {
+          setSelectedCollection(collection);
+        }}
+      />
+
+      <ExistingCatListModel
+        isOpen={openExistingCatModal}
+        onClose={() => setOpenExistingCatModal(false)}
+        onSelect={(category) => {
+          setSelectedCategory(category);
+        }}
       />
     </div>
   );

@@ -1,0 +1,51 @@
+/* ===== MODAL CONTAINER ===== */
+.existing-coll-modal {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ===== LIST WRAPPER ===== */
+.existing-coll-list {
+  max-height: 320px;
+  overflow-y: auto;
+  margin-top: 16px;
+  padding-right: 4px;
+}
+
+/* ===== SINGLE ITEM ===== */
+.existing-coll-item {
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+/* Hover effect */
+.existing-coll-item:hover {
+  background: #ecfdf5;
+  border-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+/* ===== LOADING / EMPTY TEXT ===== */
+.existing-coll-text {
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ===== SCROLLBAR (OPTIONAL POLISH) ===== */
+.existing-coll-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.existing-coll-list::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
