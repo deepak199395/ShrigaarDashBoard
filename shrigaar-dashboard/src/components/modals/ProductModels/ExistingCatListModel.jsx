@@ -21,15 +21,16 @@ const ExistingCatListModel = ({ isOpen, onClose, onSelect }) => {
 
     try {
       const res = await axios.get(
-        "https://devdeepak-backend-api-fbdhhyeddwbab9da.centralindia-01.azurewebsites.net/api/v1/shrigar/categories/list/apiXX"
-        // 🔴 replace apiXX with your actual category list endpoint
+        "https://devdeepak-backend-api-fbdhhyeddwbab9da.centralindia-01.azurewebsites.net/api/v1/shrigar/getCategories/list/api54"
       );
+      console.log(res);
 
-      if (res.data.success && res.data.flage === "Y") {
-        setCategories(res.data.category || []);
+      if (res.data.Allcategories && Array.isArray(res.data.Allcategories)) {
+        setCategories(res.data.Allcategories);
       } else {
         setError("Categories not available");
       }
+
     } catch (err) {
       setError("Failed to load categories");
     } finally {

@@ -29,11 +29,8 @@ const CreateCatProjectModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log("Category Project Data:", formData);
-
-    // 🔜 Later:
-    // axios.post("/api/category-projects/create", formData)
+   
 
     onClose();
   };
