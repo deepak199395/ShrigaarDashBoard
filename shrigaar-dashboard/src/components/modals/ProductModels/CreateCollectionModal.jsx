@@ -32,7 +32,7 @@ const CreateCollectionModal = ({ isOpen, onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://devdeepak-backend-api-fbdhhyeddwbab9da.centralindia-01.azurewebsites.net/api/v1/shrigar/collections/create/api51",
+        "https://https://api.shrigaar.com/api/v1/shrigar/collections/create/api51",
         formData
       );
 
