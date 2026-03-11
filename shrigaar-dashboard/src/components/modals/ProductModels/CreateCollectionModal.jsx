@@ -32,11 +32,13 @@ const CreateCollectionModal = ({ isOpen, onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://https://api.shrigaar.com/api/v1/shrigar/collections/create/api51",
+        "https://api.shrigaar.com/api/v1/shrigar/collections/create/api51",
         formData
       );
 
       if (response.data.success) {
+        console.log("✅ Collection created successfully", response.data);
+        
         alert("✅ Collection created successfully");
         onClose();
         setFormData({
