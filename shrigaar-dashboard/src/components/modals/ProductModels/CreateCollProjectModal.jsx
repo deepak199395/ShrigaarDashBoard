@@ -2,29 +2,24 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Modal.css";
 
+/* ---------------- INITIAL STATE ---------------- */
+const initialFormState = {
+  collectionId: "",
+  productName: "",
+  description: "",
+  originalPrice: "",
+  discountPercentage: "",
+  imageUrl: "",
+  inStock: true,
+};
+
 const CreateCollProjectModal = ({ isOpen, onClose }) => {
   const [collections, setCollections] = useState([]);
+  const [formData, setFormData] = useState(initialFormState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [formData, setFormData] = useState({
-    collectionId: "",
-    productName: "",
-    description: "",
-    originalPrice: "",
-    discountPercentage: "",
-    imageUrl: "",
-    inStock: true,
-  });
-
-  useEffect(() => {
-    if (isOpen) {
-      fetchCollections();
-    }
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
+  /* ---------------- FETCH COLLECTIONS ---------------- */
   const fetchCollections = async () => {
     try {
       const res = await axios.get(
@@ -40,6 +35,25 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
     }
   };
 
+  /* ---------------- RESET ON OPEN ---------------- */
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(initialFormState);
+      setError("");
+      fetchCollections();
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  /* ---------------- CLOSE HANDLER ---------------- */
+  const handleClose = () => {
+    setFormData(initialFormState);
+    setError("");
+    onClose();
+  };
+
+  /* ---------------- INPUT CHANGE ---------------- */
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -49,6 +63,7 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
     }));
   };
 
+  /* ---------------- SUBMIT ---------------- */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -79,7 +94,8 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
 
       if (res.data.success) {
         alert("✅ Project created successfully");
-        onClose();
+        setFormData(initialFormState);
+        handleClose();
       } else {
         setError("Failed to create project");
       }
@@ -94,12 +110,14 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
     }
   };
 
+  /* ---------------- UI ---------------- */
   return (
     <div className="modal-overlay">
       <div className="modal-box">
         <h3>Create Project (Collection)</h3>
 
         <form onSubmit={handleSubmit}>
+          {/* Collection Dropdown */}
           <select
             name="collectionId"
             className="modal-input"
@@ -141,6 +159,7 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
             value={formData.originalPrice}
             onChange={handleChange}
             min="0"
+            required
           />
 
           <input
@@ -179,7 +198,7 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
             <button
               type="button"
               className="btn cancel"
-              onClick={onClose}
+              onClick={handleClose}
               disabled={loading}
             >
               Cancel

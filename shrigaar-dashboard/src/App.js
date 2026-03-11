@@ -12,6 +12,8 @@ import Settings from "./pages/Settings";
 
 import "./App.css";
 import Sales from "./pages/Sales/Sales";
+import LoginWithEmail from "./pages/Auth/LoginWithEmail";
+import LoginWithMobile from "./pages/Auth/LoginWithMobile";
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -20,24 +22,25 @@ function App() {
     <Router>
       <div className="app">
 
-        {/* 🔹 Sidebar always visible */}
-        <Sidebar isOpen={isSidebarOpen} />
-
+      <Sidebar 
+          isOpen={isSidebarOpen} 
+          setIsOpen={setSidebarOpen}  
+        />
         <div className="main">
 
-          {/* 🔹 Navbar always visible */}
           <Navbar toggleSidebar={() => setSidebarOpen(!isSidebarOpen)} />
 
-          {/* 🔹 Only this part changes */}
           <div className="content">
             <Routes>
-              <Route path="/" element={<MainDashBoard />} />
+               <Route path="/" element={<LoginWithMobile/>}/>
+               <Route path="/dashboard" element={<MainDashBoard />} />
               <Route path="/create-staff" element={<CreateStaff />} />
               <Route path="/create-product" element={<CreateProduct />} />
               <Route path="/account" element={<Account />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/email-login" element={<LoginWithEmail/>}/>
             </Routes>
           </div>
 

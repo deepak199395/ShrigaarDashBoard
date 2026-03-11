@@ -1,59 +1,54 @@
 .sidebar {
-  width: 220px;
-  background: #1e293b;
-  color: white;
-  height: 100vh;
-  padding: 20px;
   position: fixed;
-  left: 0;
+  left: -260px;
   top: 0;
-  transition: transform 0.3s ease;
-}
-.sidebar a {
+  width: 250px;
+  height: 100%;
+  background: #111;
   color: white;
-  text-decoration: none;
+  padding: 20px;
+  transition: 0.3s ease-in-out;
+  z-index: 1000;
 }
 
-.sidebar a:hover {
-  color: #38bdf8;
+.sidebar.open {
+  left: 0;
 }
-.sidebar .logo {
-  margin-bottom: 30px;
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .sidebar ul {
   list-style: none;
+  padding: 0;
+  margin-top: 30px;
 }
 
 .sidebar ul li {
-  padding: 12px 0;
-  cursor: pointer;
+  margin: 15px 0;
 }
 
-.sidebar ul li:hover {
-  color: #38bdf8;
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    position: fixed;
-    z-index: 100;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .main {
-    margin-left: 0;
-  }
-}
-
-/* Desktop */
-@media (min-width: 769px) {
-  .main {
-    margin-left: 220px;
-  }
+.sidebar ul li a:hover {
+  color: #f39c12;
 }

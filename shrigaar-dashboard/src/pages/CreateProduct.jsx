@@ -189,7 +189,8 @@ const CreateProduct = () => {
       />
 
       <CreateCollProjectModal
-        isOpen={openCollProjectModal}
+        key={openCollProjectModal ? "open" : "closed"}
+         isOpen={openCollProjectModal}
         onClose={() => setOpenCollProjectModal(false)}
       />
 
