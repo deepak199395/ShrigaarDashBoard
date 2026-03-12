@@ -23,7 +23,7 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
   const fetchCollections = async () => {
     try {
       const res = await axios.get(
-        "https://devdeepak-backend-api-fbdhhyeddwbab9da.centralindia-01.azurewebsites.net/api/v1/shrigar/collections/list/api52"
+        "https://api.shrigaar.com/api/v1/shrigar/collections/list/api52"
       );
 
       if (res.data.success && res.data.flage === "Y") {
@@ -88,7 +88,7 @@ const CreateCollProjectModal = ({ isOpen, onClose }) => {
       console.log("🚀 Create Project Payload:", payload);
 
       const res = await axios.post(
-        "https://devdeepak-backend-api-fbdhhyeddwbab9da.centralindia-01.azurewebsites.net/api/v1/shrigar/Collections/products/create/api55",
+        "https://api.shrigaar.com/api/v1/shrigar/Collections/products/create/api55",
         payload
       );
 
