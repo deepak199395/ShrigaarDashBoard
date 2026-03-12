@@ -20,7 +20,7 @@ const ExistingCollListModel = ({ isOpen, onClose, onSelect }) => {
 
     try {
       const res = await axios.get(
-        "https://devdeepak-backend-api-fbdhhyeddwbab9da.centralindia-01.azurewebsites.net/api/v1/shrigar/collections/list/api52"
+        "https://api.shrigaar.com/api/v1/shrigar/collections/list/api52"
       );
 
       if (res.data.success && res.data.flage === "Y") {
