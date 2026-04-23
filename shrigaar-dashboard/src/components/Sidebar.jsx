@@ -24,7 +24,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <li><Link to="/create-product" onClick={() => setIsOpen(false)}>Create Product</Link></li>
         <li><Link to="/account" onClick={() => setIsOpen(false)}>Account</Link></li>
         <li><Link to="/sales" onClick={() => setIsOpen(false)}>Sales</Link></li>
-        <li><Link to="/analytics" onClick={() => setIsOpen(false)}>Analytics</Link></li>
+        <li><Link to="/user-orders" onClick={() => setIsOpen(false)}>Oders</Link></li>
+         <li><Link to="/analytics" onClick={() => setIsOpen(false)}>Analytics</Link></li>
         <li><Link to="/settings" onClick={() => setIsOpen(false)}>Settings</Link></li>
       </ul>
     </div>
