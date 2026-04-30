@@ -8,7 +8,8 @@ import CreateCollProjectModal from "../components/modals/ProductModels/CreateCol
 import CreateCatProjectModal from "../components/modals/ProductModels/CreateCatProjectModal";
 import ExistingCollListModel from "../components/modals/ProductModels/ExistingCollListModel";
 import ExistingCatListModel from "../components/modals/ProductModels/ExistingCatListModel";
-
+import NewArrivals from "./NewArrivals/NewArrivals";
+import CreateNewArrivalModal from "../../src/components/modals/ProductModels/CreateNewArrivalModal";
 const CreateProduct = () => {
   const [type, setType] = useState("");
   const [subType, setSubType] = useState("");
@@ -23,6 +24,8 @@ const CreateProduct = () => {
 
   const [selectedCollection, setSelectedCollection] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const [openNewArrivalModal, setOpenNewArrivalModal] = useState(false);
 
   const resetSubType = () => setSubType("");
 
@@ -47,8 +50,31 @@ const CreateProduct = () => {
             resetSubType();
           }}
         />
+
+        <NewArrivals
+          selected={type === "NewArrivals"}
+          onSelect={() => {
+            setType("NewArrivals");
+            resetSubType();
+          }}
+        />
       </div>
 
+      {type === "NewArrivals" && (
+        <div className="sub-selection">
+          <h3 className="category-heading">New Arrivals</h3>
+
+          <div className="selection-grid small">
+            <div
+              className="select-card category-card"
+              onClick={() => setOpenNewArrivalModal(true)}
+            >
+              <h4>Create New Arrival</h4>
+              <p>Add new arrival product</p>
+            </div>
+          </div>
+        </div>
+      )}
       {/* STEP 2: CATEGORY OPTIONS */}
       {type === "category" && (
         <div className="sub-selection">
@@ -173,6 +199,10 @@ const CreateProduct = () => {
       )}
 
       {/* MODALS */}
+      <CreateNewArrivalModal
+        isOpen={openNewArrivalModal}
+        onClose={() => setOpenNewArrivalModal(false)}
+      />
       <CreateCategoryModal
         isOpen={openCategoryModal}
         onClose={() => setOpenCategoryModal(false)}
@@ -190,7 +220,7 @@ const CreateProduct = () => {
 
       <CreateCollProjectModal
         key={openCollProjectModal ? "open" : "closed"}
-         isOpen={openCollProjectModal}
+        isOpen={openCollProjectModal}
         onClose={() => setOpenCollProjectModal(false)}
       />
 

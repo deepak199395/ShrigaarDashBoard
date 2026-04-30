@@ -54,3 +54,30 @@
   background: #2563eb;
   color: white;
 }
+.image-section {
+  margin: 15px 0;
+}
+
+.image-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.add-btn {
+  background: #4caf50;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
