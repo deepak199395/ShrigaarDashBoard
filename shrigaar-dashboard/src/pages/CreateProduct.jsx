@@ -9,26 +9,23 @@ import CreateCatProjectModal from "../components/modals/ProductModels/CreateCatP
 import ExistingCollListModel from "../components/modals/ProductModels/ExistingCollListModel";
 import ExistingCatListModel from "../components/modals/ProductModels/ExistingCatListModel";
 import NewArrivals from "./NewArrivals/NewArrivals";
+import Underbudget from "../pages/Underbudget/Underbudget";
 import CreateNewArrivalModal from "../../src/components/modals/ProductModels/CreateNewArrivalModal";
+import CreateUnderBudgetModal from "../components/modals/ProductModels/CreateUnderbudgetModel";
 const CreateProduct = () => {
   const [type, setType] = useState("");
   const [subType, setSubType] = useState("");
-
   const [openCategoryModal, setOpenCategoryModal] = useState(false);
   const [openCollectionModal, setOpenCollectionModal] = useState(false);
   const [openCatProjectModal, setOpenCatProjectModal] = useState(false);
   const [openCollProjectModal, setOpenCollProjectModal] = useState(false);
-
   const [openExistingCollModal, setOpenExistingCollModal] = useState(false);
   const [openExistingCatModal, setOpenExistingCatModal] = useState(false);
-
   const [selectedCollection, setSelectedCollection] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
   const [openNewArrivalModal, setOpenNewArrivalModal] = useState(false);
-
+  const [openUnderBudgetModal, setOpenUnderBudgetModal] = useState(false);
   const resetSubType = () => setSubType("");
-
   return (
     <div className="create-product-page">
       <h1>Create Product</h1>
@@ -58,7 +55,29 @@ const CreateProduct = () => {
             resetSubType();
           }}
         />
+        <Underbudget
+          selected={type === "Underbudget"}
+          onSelect={() => {
+            setType("Underbudget");
+            resetSubType();
+          }}
+        />
       </div>
+      {type === "Underbudget" && (
+        <div className="sub-selection">
+          <h3 className="category-heading">Under Budget</h3>
+
+          <div className="selection-grid small">
+            <div
+              className="select-card category-card"
+              onClick={() => setOpenUnderBudgetModal(true)}
+            >
+              <h4>Create Under Budget</h4>
+              <p>Add under budget product</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {type === "NewArrivals" && (
         <div className="sub-selection">
@@ -238,6 +257,10 @@ const CreateProduct = () => {
         onSelect={(category) => {
           setSelectedCategory(category);
         }}
+      />
+      <CreateUnderBudgetModal
+        isOpen={openUnderBudgetModal}
+        onClose={() => setOpenUnderBudgetModal(false)}
       />
     </div>
   );
