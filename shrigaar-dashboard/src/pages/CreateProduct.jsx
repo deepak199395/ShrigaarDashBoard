@@ -12,6 +12,7 @@ import NewArrivals from "./NewArrivals/NewArrivals";
 import Underbudget from "../pages/Underbudget/Underbudget";
 import CreateNewArrivalModal from "../../src/components/modals/ProductModels/CreateNewArrivalModal";
 import CreateUnderBudgetModal from "../components/modals/ProductModels/CreateUnderbudgetModel";
+import ExistingUnderBudgetListModel from "../components/modals/ProductModels/ExistingUnderBudgetListModel";
 const CreateProduct = () => {
   const [type, setType] = useState("");
   const [subType, setSubType] = useState("");
@@ -25,6 +26,10 @@ const CreateProduct = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [openNewArrivalModal, setOpenNewArrivalModal] = useState(false);
   const [openUnderBudgetModal, setOpenUnderBudgetModal] = useState(false);
+  const [openExistingUnderBudgetModal, setOpenExistingUnderBudgetModal] =
+    useState(false);
+  const [selectedUnderBudget, setSelectedUnderBudget] = useState(null);
+
   const resetSubType = () => setSubType("");
   return (
     <div className="create-product-page">
@@ -68,12 +73,22 @@ const CreateProduct = () => {
           <h3 className="category-heading">Under Budget</h3>
 
           <div className="selection-grid small">
+            {/* CREATE */}
             <div
               className="select-card category-card"
               onClick={() => setOpenUnderBudgetModal(true)}
             >
-              <h4>Create Under Budget</h4>
+              <h4>Create Under Budget List</h4>
               <p>Add under budget product</p>
+            </div>
+
+            {/* EXISTING LIST */}
+            <div
+              className="select-card category-card"
+              onClick={() => setOpenExistingUnderBudgetModal(true)}
+            >
+              <h4>Existing Under Budget List</h4>
+              <p>Select existing under budget</p>
             </div>
           </div>
         </div>
@@ -141,7 +156,11 @@ const CreateProduct = () => {
           </div>
         </div>
       )}
-
+      {type === "Underbudget" && selectedUnderBudget && (
+        <div className="selected-info category-info">
+          <strong>Selected Under Budget:</strong> {selectedUnderBudget.title}
+        </div>
+      )}
       {/* STEP 2: COLLECTION OPTIONS */}
       {type === "collection" && (
         <div className="sub-selection">
@@ -261,6 +280,13 @@ const CreateProduct = () => {
       <CreateUnderBudgetModal
         isOpen={openUnderBudgetModal}
         onClose={() => setOpenUnderBudgetModal(false)}
+      />
+      <ExistingUnderBudgetListModel
+        isOpen={openExistingUnderBudgetModal}
+        onClose={() => setOpenExistingUnderBudgetModal(false)}
+        onSelect={(item) => {
+          setSelectedUnderBudget(item);
+        }}
       />
     </div>
   );
