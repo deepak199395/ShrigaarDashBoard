@@ -1,0 +1,51 @@
+/* ===== MODAL CONTAINER ===== */
+.existing-cat-modal {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ===== LIST WRAPPER ===== */
+.existing-cat-list {
+  max-height: 320px;
+  overflow-y: auto;
+  margin-top: 16px;
+  padding-right: 4px;
+}
+
+/* ===== SINGLE ITEM ===== */
+.existing-cat-item {
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+/* Hover effect (BLUE for category) */
+.existing-cat-item:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* ===== TEXT ===== */
+.existing-cat-text {
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ===== SCROLLBAR ===== */
+.existing-cat-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.existing-cat-list::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}

@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+}
+
+.main {
+  flex: 1;
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+.content {
+  padding: 20px;
+}
+
+.navbar {
+  height: 60px;
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.menu-btn {
+  font-size: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-right: 15px;
+}
