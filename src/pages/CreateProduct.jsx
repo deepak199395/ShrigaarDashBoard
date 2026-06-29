@@ -26,8 +26,7 @@ const CreateProduct = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [openNewArrivalModal, setOpenNewArrivalModal] = useState(false);
   const [openUnderBudgetModal, setOpenUnderBudgetModal] = useState(false);
-  const [openExistingUnderBudgetModal, setOpenExistingUnderBudgetModal] =
-    useState(false);
+  const [openExistingUnderBudgetModal, setOpenExistingUnderBudgetModal]=useState(false);
   const [selectedUnderBudget, setSelectedUnderBudget] = useState(null);
 
   const resetSubType = () => setSubType("");

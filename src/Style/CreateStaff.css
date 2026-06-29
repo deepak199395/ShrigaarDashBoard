@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.staff-container {
+  padding: 30px;
+  background-color: #f5f7fb;
+  min-height: 100vh;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.main-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+}
+
+.add-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.staff-card {
+  background-color: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.staff-card:hover {
+  transform: translateY(-4px);
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.staff-name {
+  font-size: 22px;
+  color: #111827;
+}
+
+.category-badge {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.staff-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.staff-details p {
+  color: #374151;
+  font-size: 15px;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.update-btn {
+  flex: 1;
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  padding: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.update-btn:hover {
+  background-color: #15803d;
+}
+
+.delete-btn {
+  flex: 1;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+.loading,
+.error {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 28px;
+}
